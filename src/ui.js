@@ -68,4 +68,3 @@ export function renderTasks(element, tasks) {
     )
     .join("");
 }
-
