@@ -1,43 +1,60 @@
-# ENGSE203 Learning Dashboard
+ENGSE203 LAB 02 — Modern JavaScript Dashboard
+ผู้จัดทำ
+Student ID: 68543210001-2
 
-> LAB 02 — Modern JavaScript, Modules & Async Data
+Name: นาย กฤษณพงศ์ ชัยสุ
 
-## Student Information
+Operating system: Windows + WSL
 
-- Student ID: `<68543210001-2>`
-- Name: `<นาย กฤษณพงศ์ ชัยสุ>`
-- Operating system: `<Windows + WSL>`
-- GitHub Pages URL: `<https://github.com/Kitsanapong-F/engse203-lab02-68543210001-2>`
+GitHub Repository: https://github.com/Kitsanapong-F/engse203-lab02-68543210001-2
 
-## Project Overview
+วัตถุประสงค์ของงาน
+โปรเจกต์นี้เป็นส่วนหนึ่งของ Lab 02 ในรายวิชา ENGSE203 (Modern JavaScript, Modules & Async Data) โดยเป็นการพัฒนา Learning Dashboard ด้วย JavaScript สมัยใหม่ (Vanilla JavaScript / ES Modules) เพื่อฝึกการออกแบบโครงสร้างโค้ดที่เป็นระเบียบ (Separation of Concerns) และรองรับการดึงข้อมูลแบบ Asynchronous โดย Dashboard แสดงผลข้อมูลการเรียนรู้แบบไดนามิก รองรับทั้งสถานะปกติและสถานะเมื่อเกิดข้อผิดพลาด พร้อมทั้ง deploy ขึ้น GitHub Pages เพื่อให้เข้าถึงได้จริง
 
-โปรเจกต์นี้เป็นส่วนหนึ่งของ Lab 02 ในรายวิชา ENGSE203 (Modern JavaScript, Modules & Async Data) โดยเป็นการพัฒนา Learning Dashboard ด้วย JavaScript สมัยใหม่ (Vanilla JavaScript / ES Modules) ที่แบ่งการทำงานออกเป็นโมดูลย่อยอย่างน้อย 4 โมดูล เพื่อฝึกการออกแบบโครงสร้างโค้ดที่เป็นระเบียบ (Separation of Concerns) น่ากลับมาใช้ซ้ำได้ (reusable) และดูแลรักษาง่าย (maintainable) Dashboard นี้แสดงผลข้อมูลการเรียนรู้แบบไดนามิกที่โหลดผ่าน Async/Await จากไฟล์ JSON ในรูปแบบ UI ที่รองรับทั้ง สถานะปกติ (Normal State) และ สถานะเมื่อเกิดข้อผิดพลาด (Error State จาก query string ?simulateError=1) พร้อมทั้งมีการตรวจสอบคุณภาพโค้ดด้วยเครื่องมือที่กำหนด (npm run check) และ deploy ขึ้น GitHub Pages เพื่อให้เข้าถึงได้จริงผ่านเบราว์เซอร์
+โครงสร้างโมดูล (Modules)
+NO.	Module	หน้าที่ความรับผิดชอบ
+1	api.js	ดึงข้อมูล (data fetching) จาก learning-tasks.json พร้อมจัดการ error handling
+2	main.js	Entry point ของแอป, จัดการ state และ event listeners
+3	ui.js	รับผิดชอบการ render UI ทั้งหมด และป้องกัน XSS ด้วย escapeHtml()
+4	utils.js	ฟังก์ชันช่วยเหลือสำหรับการกรองข้อมูล (filter) และคำนวณสถิติ
+วิธีติดตั้งและรันโปรเจกต์
+ข้อกำหนดเบื้องต้น (Prerequisites)
+Node.js (v22+)
 
-## Installation and Run
+npm
 
-```bash
+ขั้นตอนการทำ
+Bash
+# 1. Clone repository
+git clone https://github.com/Kitsanapong-F/engse203-lab02-68543210001-2.git
+cd engse203-lab02-68543210001-2
+
+# 2. ติดตั้ง dependencies
 npm install
-npm run check
+
+# 3. รันโปรเจกต์
 npm run dev
-```
+คำสั่งที่ใช้งานได้
+คำสั่ง	คำอธิบาย
+npm install	ติดตั้ง dependencies ทั้งหมดของโปรเจกต์
+npm run dev	รันเซิร์ฟเวอร์สำหรับพัฒนา (development server)
+npm run build	สร้าง build output สำหรับ production
+GitHub Pages URL
+🔗 Dashboard ที่ deploy แล้ว: https://kitsanapong-f.github.io/engse203-lab02-68543210001-2/
 
-## Build and Preview
+ปัญหาที่พบและวิธีแก้ไข
+ปัญหาที่พบ	สาเหตุ	วิธีแก้ไข
+npm command not found	เครื่องที่ใช้ไม่มี Node.js หรือไม่ได้ติดตั้งสภาพแวดล้อมพัฒนา	ติดตั้ง Node.js ผ่าน nvm หรือใช้งานผ่าน GitHub Codespaces
+Permission denied	สิทธิ์การเข้าถึงโฟลเดอร์ในเครื่องส่วนกลางจำกัด	ใช้ GitHub Codespaces แทนการติดตั้งลงเครื่องส่วนกลาง
+References & AI Assistance
+References
+async-await_and_error-handling.md
 
-```bash
-npm run build
-npm run preview
-```
+destructuring_array_map_filter_reduce.md
 
-## Test Evidence
+AI Assistance Disclosure
+เครื่องมือที่ใช้: Gemini / Claude
 
-- Normal state screenshot: `<add image path or markdown image>`
-- Error state screenshot (`?simulateError=1`): `<add image path or markdown image>`
+ลักษณะการใช้งาน: ช่วยอธิบายแนวคิด ES Modules, ช่วย Debug Error, และช่วยร่างโครงสร้างไฟล์ README
 
-## Problems and Fixes
-
-Describe at least one problem encountered and how you solved it.
-
-## References & AI Assistance
-
-- References used: `<list sources>`
-- AI assistance used: `<describe question asked and what you changed/understood yourself>`
+ส่วนที่เขียน/แก้ไขเองโดยผู้เรียน: โค้ดส่วน Logic ทั้งหมดใน src/, การทำ Deployment, และการตั้งค่าโปรเจกต์ตามโจทย์ Lab
